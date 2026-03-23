@@ -1,0 +1,30 @@
+<form class="comment-box" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <textarea
+    class="comment-box__textarea"
+    formControlName="content"
+    [placeholder]="placeholder()"
+    aria-label="Comment content"
+    rows="4"
+  ></textarea>
+
+  <div class="comment-box__footer">
+    <picture class="comment-box__avatar-wrapper">
+      <source [srcset]="avatarWebpSrc()" type="image/webp" />
+      <img
+        class="comment-box__avatar"
+        [ngSrc]="avatarPngSrc()"
+        [alt]="avatarAlt()"
+        width="32"
+        height="32"
+      />
+    </picture>
+
+    <div class="comment-box__actions">
+      @if (showCancel()) {
+        <button class="comment-box__cancel" type="button" (click)="cancel()">Cancel</button>
+      }
+      <button class="comment-box__submit" type="submit">{{ submitLabel() }}</button>
+    </div>
+  </div>
+</form>
+

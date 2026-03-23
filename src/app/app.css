@@ -1,0 +1,19 @@
+.comments-page {
+  margin-inline: auto;
+  padding: 3.2rem 1.6rem 6.4rem;
+}
+
+@media (min-width: 768px) {
+  .comments-page {
+    width: min(100%, 76.8rem);
+    padding: 4rem 2.4rem 8rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .comments-page {
+    width: min(100%, 73rem);
+    padding-top: 6.4rem;
+  }
+}
+

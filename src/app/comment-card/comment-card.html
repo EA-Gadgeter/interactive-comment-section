@@ -1,0 +1,58 @@
+<article class="comment-card">
+  <header class="comment-card__header">
+    <picture class="comment-card__avatar-wrapper">
+      <source [srcset]="avatarWebpSrc()" type="image/webp" />
+      <img
+        class="comment-card__avatar"
+        [ngSrc]="avatarPngSrc()"
+        [alt]="avatarAlt()"
+        width="32"
+        height="32"
+      />
+    </picture>
+    <p class="comment-card__author">{{ comment().user.username }}</p>
+    @if (isCurrentUser()) {
+      <span class="comment-card__you-tag">you</span>
+    }
+    <p class="comment-card__date">{{ comment().createdAt }}</p>
+  </header>
+
+  <p class="comment-card__content">
+    @if (replyingTo(); as replyingToUser) {
+      <span class="comment-card__mention">{{ '@' + replyingToUser }}</span>
+      <span>&nbsp;</span>
+    }
+    <span>{{ comment().content }}</span>
+  </p>
+
+  <footer class="comment-card__footer">
+    <div class="score" aria-label="Comment score controls" role="group">
+      <button class="score__button" type="button" aria-label="Increase score">
+        <img ngSrc="/images/icon-plus.svg" alt="" width="11" height="11" />
+      </button>
+      <p class="score__value" [attr.aria-label]="scoreLabel()">{{ comment().score }}</p>
+      <button class="score__button" type="button" aria-label="Decrease score">
+        <img ngSrc="/images/icon-minus.svg" alt="" width="11" height="3" />
+      </button>
+    </div>
+
+    @if (isCurrentUser()) {
+      <div class="comment-card__owner-actions" role="group" aria-label="Comment actions">
+        <button class="action-button action-button--delete" type="button" aria-label="Delete comment">
+          <img ngSrc="/images/icon-delete.svg" alt="" width="12" height="14" />
+          <span>Delete</span>
+        </button>
+        <button class="action-button action-button--edit" type="button" aria-label="Edit comment">
+          <img ngSrc="/images/icon-edit.svg" alt="" width="14" height="14" />
+          <span>Edit</span>
+        </button>
+      </div>
+    } @else {
+      <button class="reply-button" type="button" aria-label="Reply to comment">
+        <img ngSrc="/images/icon-reply.svg" alt="" width="14" height="13" />
+        <span>Reply</span>
+      </button>
+    }
+  </footer>
+</article>
+

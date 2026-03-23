@@ -1,0 +1,16 @@
+<section class="comment-thread" aria-label="Comments list">
+  @for (comment of comments(); track comment.id) {
+    <article class="comment-thread__item">
+      <app-comment-card [comment]="comment" [currentUsername]="currentUsername()"></app-comment-card>
+
+      @if (comment.replies.length > 0) {
+        <div class="comment-thread__replies" aria-label="Replies list">
+          @for (reply of comment.replies; track reply.id) {
+            <app-comment-card [comment]="reply" [currentUsername]="currentUsername()"></app-comment-card>
+          }
+        </div>
+      }
+    </article>
+  }
+</section>
+

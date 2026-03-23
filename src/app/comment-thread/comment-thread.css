@@ -1,0 +1,25 @@
+.comment-thread {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.comment-thread__item {
+  display: grid;
+  gap: 1.6rem;
+}
+
+.comment-thread__replies {
+  margin-left: 1.6rem;
+  padding-left: 1.6rem;
+  border-left: 2px solid var(--grey-100);
+  display: grid;
+  gap: 1.6rem;
+}
+
+@media (min-width: 768px) {
+  .comment-thread__replies {
+    margin-left: 4rem;
+    padding-left: 4rem;
+  }
+}
+
