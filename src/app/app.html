@@ -1,7 +1,10 @@
 <main class="comments-page" aria-label="Interactive comments section">
   <app-comment-thread
     [comments]="comments()"
+    [currentUser]="currentUser()"
     [currentUsername]="currentUsername()"
+    (commentCreated)="createComment($event)"
+    (replyCreated)="createReply($event)"
   ></app-comment-thread>
 </main>
 

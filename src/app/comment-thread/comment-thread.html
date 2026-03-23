@@ -1,16 +1,40 @@
 <section class="comment-thread" aria-label="Comments list">
   @for (comment of comments(); track comment.id) {
     <article class="comment-thread__item">
-      <app-comment-card [comment]="comment" [currentUsername]="currentUsername()"></app-comment-card>
+      <app-comment-card
+        [comment]="comment"
+        [currentUsername]="currentUsername()"
+        (replyRequested)="openReplyBox(comment.id, comment.user.username)"
+      ></app-comment-card>
 
       @if (comment.replies.length > 0) {
         <div class="comment-thread__replies" aria-label="Replies list">
           @for (reply of comment.replies; track reply.id) {
-            <app-comment-card [comment]="reply" [currentUsername]="currentUsername()"></app-comment-card>
+            <app-comment-card
+              [comment]="reply"
+              [currentUsername]="currentUsername()"
+              (replyRequested)="openReplyBox(comment.id, reply.user.username)"
+            ></app-comment-card>
           }
         </div>
       }
+
+      @if (replyTarget()?.commentId === comment.id) {
+        <app-comment-box
+          [currentUser]="currentUser()"
+          [placeholder]="'Reply to @' + replyTarget()!.replyingTo + '...'"
+          [submitLabel]="'REPLY'"
+          [showCancel]="true"
+          (submitted)="submitReply($event)"
+          (cancelled)="closeReplyBox()"
+        ></app-comment-box>
+      }
     </article>
   }
+
+  <app-comment-box
+    [currentUser]="currentUser()"
+    (submitted)="submitComment($event)"
+  ></app-comment-box>
 </section>
 

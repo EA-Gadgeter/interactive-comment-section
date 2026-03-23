@@ -31,4 +31,14 @@ export interface MockData {
 
 export type CommentNode = Comment | Reply;
 
+export interface NewCommentInput {
+  content: string;
+}
+
+export interface NewReplyInput {
+  commentId: number;
+  replyingTo: string;
+  content: string;
+}
+
 

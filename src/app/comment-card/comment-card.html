@@ -48,7 +48,12 @@
         </button>
       </div>
     } @else {
-      <button class="reply-button" type="button" aria-label="Reply to comment">
+      <button
+        class="reply-button"
+        type="button"
+        [attr.aria-label]="replyButtonLabel()"
+        (click)="requestReply()"
+      >
         <img ngSrc="/images/icon-reply.svg" alt="" width="14" height="13" />
         <span>Reply</span>
       </button>

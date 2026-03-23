@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { type CommentNode } from '../interfaces/comment.interface';
 
@@ -12,6 +12,7 @@ import { type CommentNode } from '../interfaces/comment.interface';
 export class CommentCardComponent {
   readonly comment = input.required<CommentNode>();
   readonly currentUsername = input.required<string>();
+  readonly replyRequested = output<void>();
 
   readonly avatarWebpSrc = computed(() => this.comment().user.image.webp.replace('./', '/'));
   readonly avatarPngSrc = computed(() => this.comment().user.image.png.replace('./', '/'));
@@ -23,6 +24,11 @@ export class CommentCardComponent {
     return 'replyingTo' in comment ? comment.replyingTo : undefined;
   });
   readonly isCurrentUser = computed(() => this.comment().user.username === this.currentUsername());
+  readonly replyButtonLabel = computed(() => `Reply to ${this.comment().user.username}`);
+
+  requestReply(): void {
+    this.replyRequested.emit();
+  }
 }
 
 
