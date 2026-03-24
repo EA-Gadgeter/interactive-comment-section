@@ -102,6 +102,7 @@ export class CommentsDataService {
 
   updateNodeContent(input: UpdateContentInput): void {
     const content = input.content.trim();
+    const currentUsername = this.currentUsername();
 
     if (content.length === 0) {
       return;
@@ -114,13 +115,19 @@ export class CommentsDataService {
         }
 
         if (input.replyId === undefined) {
+          if (comment.user.username !== currentUsername || comment.content === content) {
+            return comment;
+          }
+
           return { ...comment, content };
         }
 
         return {
           ...comment,
           replies: comment.replies.map((reply) =>
-            reply.id === input.replyId ? { ...reply, content } : reply
+            reply.id === input.replyId && reply.user.username === currentUsername && reply.content !== content
+              ? { ...reply, content }
+              : reply
           )
         };
       })
