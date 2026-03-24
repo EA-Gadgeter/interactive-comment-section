@@ -1,59 +1,85 @@
-# InteractiveCommentSection
+# Frontend Mentor - Interactive comments section solution
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
+This is a solution to the [Interactive comments section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Development server
+## Table of contents
 
-To start a local development server, run:
+- [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Links](#links)
+- [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+    - [AI Collaboration](#ai-collaboration)
+- [Author](#author)
 
-```bash
-ng serve
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Create, Read, Update, and Delete comments and replies
+- Upvote and downvote comments
+- **Bonus**: If you're building a purely front-end project, use `localStorage` to save the current state in the browser that persists when the browser is refreshed.
+
+### Links
+
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- AI (Github Copilot Student Plan, using Agent and Plan mode)
+- [Angular with signals](https://angular.dev/) - JavaScript Framework
+
+### What I learned
+
+To be honest, I was surprised when the AI decided to make the edit text area close 
+using the ESC key; it was something I hadn’t known how to do in Angular until 
+now, and actually, it’s not that complicated.
+
+```typescript
+@Component({
+  selector: 'app-comment-card',
+  imports: [NgOptimizedImage, ReactiveFormsModule],
+  templateUrl: './comment-card.html',
+  styleUrl: './comment-card.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  // The important is this
+  host: {
+    '(document:keydown.escape)': 'cancelEditing()'
+  }
+})
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Continued development
 
-## Code scaffolding
+I feel that there were some implementations where the AI had over-engineered 
+things; I pointed this out to it and he toned it down a bit, but I suppose 
+I could have had a bit of a dig through the code to simplify a few things. 
+That said, I think the current result is more than acceptable.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### AI Collaboration
 
-```bash
-ng generate component component-name
-```
+Much like my last challenge, I want to keep experimenting and speeding up my development process using AI, so I let it take full control, whilst I stepped in on occasion to make a few tweaks or corrections.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The last time I used WebStorm with AI, to be honest, the experience left quite a lot to be desired, but that was a few years ago, so I decided to give it another go, and honestly, it has improved a lot compared to VSCode (using Gemini 3.1 Pro Preview); it has almost all the features.
 
-```bash
-ng generate --help
-```
+I still prefer VSCode; I’m not sure if it was the model that I used this time (GPT 5.3 Codex for everything), the fact that I was using Angular, or VSCode itself, but I felt VSCode not only gave me better answers; but also understood the AGENTS.md file provided by the folks at Frontend Mentor better, as it asked me far more questions and did less over-engineering of the code.
 
-## Building
+## Author
 
-To build the project run:
+- Website - [Emiliano Acevedo](https://ea-gadgeter.github.io/Web-Portafolio/) **VERY outdated, have learned a lot more since I made this portfolio**
+- Frontend Mentor - [@EA-Gadgeter](https://www.frontendmentor.io/profile/EA-Gadgeter)
+- LinkedIn - [Emiliano Acevedo](https://www.linkedin.com/in/ariel-emiliano-acevedo-posos-72044a247/?locale=en_US)
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
