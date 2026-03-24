@@ -1,18 +1,19 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, computed, effect, signal } from '@angular/core';
 import mockData from '../mock/data.json';
 import {
   type Comment,
+  type DeleteTarget,
   type MockData,
   type NewCommentInput,
   type NewReplyInput,
   type Reply,
   type UpdateContentInput,
   type User,
-  type DeleteTarget,
   type VoteTarget
 } from '../interfaces/comment.interface';
 
-const initialData = mockData as MockData;
+const STORAGE_KEY = 'interactive-comments-data-v1';
+const fallbackData = mockData as MockData;
 
 function getInitialNextId(comments: readonly Comment[]): number {
   const ids = comments.flatMap((comment) => [comment.id, ...comment.replies.map((reply) => reply.id)]);
@@ -20,6 +21,67 @@ function getInitialNextId(comments: readonly Comment[]): number {
 
   return maxId + 1;
 }
+
+function isEmptyParsedValue(value: unknown): boolean {
+  if (value === null || value === undefined) {
+    return true;
+  }
+
+  if (typeof value === 'string') {
+    return value.trim().length === 0;
+  }
+
+  if (Array.isArray(value)) {
+    return value.length === 0;
+  }
+
+  if (typeof value === 'object') {
+    return Object.keys(value).length === 0;
+  }
+
+  return false;
+}
+
+function loadInitialData(): MockData {
+  if (typeof localStorage === 'undefined') {
+    return fallbackData;
+  }
+
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+
+    if (raw === null || raw.trim().length === 0) {
+      return fallbackData;
+    }
+
+    const parsed = JSON.parse(raw) as Partial<MockData>;
+
+    if (isEmptyParsedValue(parsed)) {
+      return fallbackData;
+    }
+
+    return {
+      currentUser: parsed.currentUser ?? fallbackData.currentUser,
+      comments: parsed.comments ?? fallbackData.comments
+    };
+  } catch {
+    return fallbackData;
+  }
+}
+
+function persistData(data: MockData): void {
+  if (typeof localStorage === 'undefined') {
+    return;
+  }
+
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch {
+    return;
+  }
+}
+
+const initialData = loadInitialData();
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +92,15 @@ export class CommentsDataService {
   readonly comments = signal<readonly Comment[]>(initialData.comments);
 
   private readonly nextId = signal(getInitialNextId(initialData.comments));
+
+  constructor() {
+    effect(() => {
+      persistData({
+        currentUser: this.currentUser(),
+        comments: [...this.comments()]
+      });
+    });
+  }
 
   addComment(input: NewCommentInput): void {
     const content = input.content.trim();
