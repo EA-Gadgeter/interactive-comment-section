@@ -27,7 +27,7 @@
           aria-label="Delete comment"
           (click)="requestDelete()"
         >
-          <img ngSrc="/images/icon-delete.svg" alt="" width="12" height="14" />
+          <img ngSrc="./images/icon-delete.svg" alt="" width="12" height="14" />
           <span class="comment-card__header-action-text">Delete</span>
         </button>
         <button
@@ -37,7 +37,7 @@
           [attr.aria-label]="editActionAriaLabel()"
           (click)="toggleEditing()"
         >
-          <img ngSrc="/images/icon-edit.svg" alt="" width="14" height="14" />
+          <img ngSrc="./images/icon-edit.svg" alt="" width="14" height="14" />
           <span class="comment-card__header-action-text">{{ editActionLabel() }}</span>
         </button>
       </div>
@@ -79,7 +79,7 @@
         [attr.aria-label]="upvoteButtonLabel()"
         (click)="requestUpvote()"
       >
-        <img ngSrc="/images/icon-plus.svg" alt="" width="11" height="11" />
+        <img ngSrc="./images/icon-plus.svg" alt="" width="11" height="11" />
       </button>
       <p class="score__value" [attr.aria-label]="scoreLabel()">{{ comment().score }}</p>
       <button
@@ -88,7 +88,7 @@
         [attr.aria-label]="downvoteButtonLabel()"
         (click)="requestDownvote()"
       >
-        <img ngSrc="/images/icon-minus.svg" alt="" width="11" height="3" />
+        <img ngSrc="./images/icon-minus.svg" alt="" width="11" height="3" />
       </button>
     </div>
 
@@ -109,7 +109,7 @@
           aria-label="Delete comment"
           (click)="requestDelete()"
         >
-          <img ngSrc="/images/icon-delete.svg" alt="" width="12" height="14" />
+          <img ngSrc="./images/icon-delete.svg" alt="" width="12" height="14" />
           <span>Delete</span>
         </button>
         <button
@@ -119,7 +119,7 @@
           [attr.aria-label]="editActionAriaLabel()"
           (click)="toggleEditing()"
         >
-          <img ngSrc="/images/icon-edit.svg" alt="" width="14" height="14" />
+          <img ngSrc="./images/icon-edit.svg" alt="" width="14" height="14" />
           <span>{{ editActionLabel() }}</span>
         </button>
       </div>
@@ -130,7 +130,7 @@
         [attr.aria-label]="replyButtonLabel()"
         (click)="requestReply()"
       >
-        <img ngSrc="/images/icon-reply.svg" alt="" width="14" height="13" />
+        <img ngSrc="./images/icon-reply.svg" alt="" width="14" height="13" />
         <span>Reply</span>
       </button>
     }

@@ -39,8 +39,8 @@ export class CommentCardComponent {
     validators: [Validators.required, Validators.maxLength(500)]
   });
 
-  readonly avatarWebpSrc = computed(() => this.comment().user.image.webp.replace('./', '/'));
-  readonly avatarPngSrc = computed(() => this.comment().user.image.png.replace('./', '/'));
+  readonly avatarWebpSrc = computed(() => this.comment().user.image.webp);
+  readonly avatarPngSrc = computed(() => this.comment().user.image.png);
   readonly avatarAlt = computed(() => `Avatar of ${this.comment().user.username}`);
   readonly scoreLabel = computed(() => `Current score ${this.comment().score}`);
   readonly replyingTo = computed(() => {

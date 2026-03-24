@@ -26,8 +26,8 @@ export class CommentBoxComponent {
     })
   });
 
-  readonly avatarWebpSrc = computed(() => this.currentUser().image.webp.replace('./', '/'));
-  readonly avatarPngSrc = computed(() => this.currentUser().image.png.replace('./', '/'));
+  readonly avatarWebpSrc = computed(() => this.currentUser().image.webp);
+  readonly avatarPngSrc = computed(() => this.currentUser().image.png);
   readonly avatarAlt = computed(() => `Avatar of ${this.currentUser().username}`);
 
   submit(): void {
