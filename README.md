@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://github.com/EA-Gadgeter/interactive-comment-section](https://your-solution-url.com)
+- Solution URL: [https://github.com/EA-Gadgeter/interactive-comment-section](https://github.com/EA-Gadgeter/interactive-comment-section)
 - Live Site URL: [https://ea-gadgeter.github.io/interactive-comment-section/](https://ea-gadgeter.github.io/interactive-comment-section/)
 
 ## My process
