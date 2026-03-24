@@ -40,14 +40,14 @@
 
 @media (min-width: 768px) {
   .comments-page {
-    width: min(100%, 76.8rem);
-    padding: 4rem 2.4rem 8rem;
+    width: min(100%, 102.4rem);
+    padding: 4.8rem 3.2rem 8rem;
   }
 }
 
 @media (min-width: 1440px) {
   .comments-page {
-    width: min(100%, 73rem);
+    width: min(100%, 102.4rem);
     padding-top: 6.4rem;
   }
 }

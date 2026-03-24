@@ -63,6 +63,41 @@
   background-color: var(--purple-600);
 }
 
+@media (min-width: 768px) {
+  .comment-box {
+    padding: 2.4rem;
+    display: grid;
+    grid-template-columns: 3.2rem minmax(0, 1fr) auto;
+    column-gap: 1.6rem;
+    align-items: start;
+  }
+
+  .comment-box__textarea {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .comment-box__footer {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    margin-top: 0;
+    display: contents;
+  }
+
+  .comment-box__avatar-wrapper {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+    margin-top: 0.4rem;
+  }
+
+  .comment-box__actions {
+    grid-column: 3;
+    grid-row: 1;
+    align-self: start;
+  }
+}
+
 @media (hover: hover) {
   .comment-box__submit:hover {
     background-color: var(--purple-200);

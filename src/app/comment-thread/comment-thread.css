@@ -17,8 +17,14 @@
 }
 
 @media (min-width: 768px) {
+  .comment-thread,
+  .comment-thread__item,
   .comment-thread__replies {
-    margin-left: 4rem;
+    gap: 2.4rem;
+  }
+
+  .comment-thread__replies {
+    margin-left: 3.8rem;
     padding-left: 4rem;
   }
 }

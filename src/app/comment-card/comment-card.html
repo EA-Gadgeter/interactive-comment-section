@@ -1,5 +1,8 @@
 <article class="comment-card">
-  <header class="comment-card__header">
+  <header
+    class="comment-card__header"
+    [class.comment-card__header--editing]="isCurrentUser() && isEditing()"
+  >
     <picture class="comment-card__avatar-wrapper">
       <source [srcset]="avatarWebpSrc()" type="image/webp" />
       <img

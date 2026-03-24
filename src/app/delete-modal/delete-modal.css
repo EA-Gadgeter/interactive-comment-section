@@ -7,7 +7,7 @@
 .delete-modal__backdrop {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.55);
 }
 
 .delete-modal__container {
@@ -59,6 +59,24 @@
 
 .delete-modal__button--confirm {
   background-color: var(--pink-400);
+}
+
+@media (min-width: 768px) {
+  .delete-modal {
+    width: min(100%, 40rem);
+    padding: 3.2rem;
+    border-radius: 1rem;
+  }
+
+  .delete-modal__description {
+    margin-top: 2rem;
+    line-height: 1.5;
+  }
+
+  .delete-modal__actions {
+    margin-top: 2.4rem;
+    gap: 1.6rem;
+  }
 }
 
 @media (hover: hover) {
