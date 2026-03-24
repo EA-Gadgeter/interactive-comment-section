@@ -5,6 +5,19 @@
     [currentUsername]="currentUsername()"
     (commentCreated)="createComment($event)"
     (replyCreated)="createReply($event)"
+    (upvoteRequested)="upvote($event)"
+    (downvoteRequested)="downvote($event)"
+    (deleteRequested)="openDeleteModal($event)"
+    (updateRequested)="updateContent($event)"
   ></app-comment-thread>
+
+  @if (pendingDeleteTarget()) {
+    <app-delete-modal
+      animate.enter="modal-fade-enter"
+      animate.leave="modal-fade-leave"
+      (confirmed)="confirmDelete()"
+      (cancelled)="closeDeleteModal()"
+    ></app-delete-modal>
+  }
 </main>
 

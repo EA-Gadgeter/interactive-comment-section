@@ -1,7 +1,14 @@
 import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
 import { CommentBoxComponent } from '../comment-box/comment-box';
 import { CommentCardComponent } from '../comment-card/comment-card';
-import { type Comment, type NewReplyInput, type User } from '../interfaces/comment.interface';
+import {
+  type Comment,
+  type DeleteTarget,
+  type NewReplyInput,
+  type UpdateContentInput,
+  type User,
+  type VoteTarget
+} from '../interfaces/comment.interface';
 
 type ReplyTarget = {
   commentId: number;
@@ -22,6 +29,10 @@ export class CommentThreadComponent {
 
   readonly commentCreated = output<string>();
   readonly replyCreated = output<NewReplyInput>();
+  readonly upvoteRequested = output<VoteTarget>();
+  readonly downvoteRequested = output<VoteTarget>();
+  readonly deleteRequested = output<DeleteTarget>();
+  readonly updateRequested = output<UpdateContentInput>();
 
   readonly replyTarget = signal<ReplyTarget | null>(null);
 
@@ -51,6 +62,22 @@ export class CommentThreadComponent {
     });
 
     this.closeReplyBox();
+  }
+
+  requestUpvote(commentId: number, replyId?: number): void {
+    this.upvoteRequested.emit({ commentId, replyId });
+  }
+
+  requestDownvote(commentId: number, replyId?: number): void {
+    this.downvoteRequested.emit({ commentId, replyId });
+  }
+
+  requestDelete(commentId: number, replyId?: number): void {
+    this.deleteRequested.emit({ commentId, replyId });
+  }
+
+  requestUpdate(commentId: number, content: string, replyId?: number): void {
+    this.updateRequested.emit({ commentId, content, replyId });
   }
 }
 

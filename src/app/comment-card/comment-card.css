@@ -54,6 +54,39 @@
   color: var(--purple-600);
 }
 
+.comment-card__edit {
+  margin-top: 1.6rem;
+  display: grid;
+  gap: 1.6rem;
+}
+
+.comment-card__edit-textarea {
+  width: 100%;
+  min-height: 9.6rem;
+  border: 1px solid var(--purple-600);
+  border-radius: 0.8rem;
+  padding: 1.2rem 1.6rem;
+  resize: vertical;
+  color: var(--grey-800);
+}
+
+.comment-card__edit-textarea:focus-visible {
+  outline: none;
+  border-color: var(--purple-600);
+}
+
+.comment-card__update-button {
+  justify-self: end;
+  border: 0;
+  min-width: 10.4rem;
+  min-height: 4.8rem;
+  border-radius: 0.8rem;
+  padding: 1.2rem 1.6rem;
+  font-weight: 500;
+  color: var(--white);
+  background-color: var(--purple-600);
+}
+
 .comment-card__footer {
   margin-top: 1.6rem;
   display: flex;
@@ -136,6 +169,10 @@
 
   .score__button:hover {
     opacity: 0.8;
+  }
+
+  .comment-card__update-button:hover {
+    background-color: var(--purple-200);
   }
 }
 

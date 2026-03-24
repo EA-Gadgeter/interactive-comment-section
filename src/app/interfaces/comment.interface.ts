@@ -41,4 +41,20 @@ export interface NewReplyInput {
   content: string;
 }
 
+export interface VoteTarget {
+  commentId: number;
+  replyId?: number;
+}
+
+export interface DeleteTarget {
+  commentId: number;
+  replyId?: number;
+}
+
+export interface UpdateContentInput {
+  commentId: number;
+  content: string;
+  replyId?: number;
+}
+
 

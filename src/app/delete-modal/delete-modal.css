@@ -1,0 +1,73 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+
+.delete-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.delete-modal__container {
+  position: relative;
+  min-height: 100dvh;
+  padding: 2rem 1.6rem;
+  display: grid;
+  place-items: center;
+}
+
+.delete-modal {
+  width: min(100%, 34.3rem);
+  padding: 2.4rem;
+  border-radius: 0.8rem;
+  background-color: var(--white);
+}
+
+.delete-modal__title {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--grey-800);
+}
+
+.delete-modal__description {
+  margin: 1.6rem 0 0;
+  color: var(--grey-500);
+}
+
+.delete-modal__actions {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.delete-modal__button {
+  border: 0;
+  min-height: 4.8rem;
+  border-radius: 0.8rem;
+  padding: 1.2rem 1.6rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.delete-modal__button--cancel {
+  background-color: var(--grey-500);
+}
+
+.delete-modal__button--confirm {
+  background-color: var(--pink-400);
+}
+
+@media (hover: hover) {
+  .delete-modal__button--cancel:hover {
+    opacity: 0.85;
+  }
+
+  .delete-modal__button--confirm:hover {
+    background-color: var(--pink-200);
+  }
+}
+

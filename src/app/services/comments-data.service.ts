@@ -6,7 +6,10 @@ import {
   type NewCommentInput,
   type NewReplyInput,
   type Reply,
-  type User
+  type UpdateContentInput,
+  type User,
+  type DeleteTarget,
+  type VoteTarget
 } from '../interfaces/comment.interface';
 
 const initialData = mockData as MockData;
@@ -69,6 +72,79 @@ export class CommentsDataService {
           ? { ...comment, replies: [...comment.replies, newReply] }
           : comment
       )
+    );
+  }
+
+  upvote(target: VoteTarget): void {
+    this.updateScore(target, 1);
+  }
+
+  downvote(target: VoteTarget): void {
+    this.updateScore(target, -1);
+  }
+
+  deleteNode(target: DeleteTarget): void {
+    this.comments.update((comments) => {
+      if (target.replyId === undefined) {
+        return comments.filter((comment) => comment.id !== target.commentId);
+      }
+
+      return comments.map((comment) =>
+        comment.id === target.commentId
+          ? {
+              ...comment,
+              replies: comment.replies.filter((reply) => reply.id !== target.replyId)
+            }
+          : comment
+      );
+    });
+  }
+
+  updateNodeContent(input: UpdateContentInput): void {
+    const content = input.content.trim();
+
+    if (content.length === 0) {
+      return;
+    }
+
+    this.comments.update((comments) =>
+      comments.map((comment) => {
+        if (comment.id !== input.commentId) {
+          return comment;
+        }
+
+        if (input.replyId === undefined) {
+          return { ...comment, content };
+        }
+
+        return {
+          ...comment,
+          replies: comment.replies.map((reply) =>
+            reply.id === input.replyId ? { ...reply, content } : reply
+          )
+        };
+      })
+    );
+  }
+
+  private updateScore(target: VoteTarget, delta: number): void {
+    this.comments.update((comments) =>
+      comments.map((comment) => {
+        if (comment.id !== target.commentId) {
+          return comment;
+        }
+
+        if (target.replyId === undefined) {
+          return { ...comment, score: comment.score + delta };
+        }
+
+        return {
+          ...comment,
+          replies: comment.replies.map((reply) =>
+            reply.id === target.replyId ? { ...reply, score: reply.score + delta } : reply
+          )
+        };
+      })
     );
   }
 

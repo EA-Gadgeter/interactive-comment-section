@@ -5,6 +5,10 @@
         [comment]="comment"
         [currentUsername]="currentUsername()"
         (replyRequested)="openReplyBox(comment.id, comment.user.username)"
+        (upvoteRequested)="requestUpvote(comment.id)"
+        (downvoteRequested)="requestDownvote(comment.id)"
+        (deleteRequested)="requestDelete(comment.id)"
+        (updateRequested)="requestUpdate(comment.id, $event)"
       ></app-comment-card>
 
       @if (comment.replies.length > 0) {
@@ -14,6 +18,10 @@
               [comment]="reply"
               [currentUsername]="currentUsername()"
               (replyRequested)="openReplyBox(comment.id, reply.user.username)"
+              (upvoteRequested)="requestUpvote(comment.id, reply.id)"
+              (downvoteRequested)="requestDownvote(comment.id, reply.id)"
+              (deleteRequested)="requestDelete(comment.id, reply.id)"
+              (updateRequested)="requestUpdate(comment.id, $event, reply.id)"
             ></app-comment-card>
           }
         </div>

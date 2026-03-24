@@ -3,6 +3,41 @@
   padding: 3.2rem 1.6rem 6.4rem;
 }
 
+.modal-fade-enter {
+  animation: modal-fade-in 180ms ease-out both;
+}
+
+.modal-fade-leave {
+  animation: modal-fade-out 140ms ease-in both;
+}
+
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-fade-enter,
+  .modal-fade-leave {
+    animation-duration: 0.01ms;
+  }
+}
+
 @media (min-width: 768px) {
   .comments-page {
     width: min(100%, 76.8rem);
