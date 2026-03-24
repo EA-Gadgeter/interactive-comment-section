@@ -131,6 +131,11 @@
   background: transparent;
 }
 
+.score__button img {
+  opacity: 0.45;
+  transition: opacity 140ms ease;
+}
+
 .score__value {
   margin: 0;
   font-weight: 500;
@@ -274,7 +279,11 @@
   }
 
   .score__button:hover {
-    opacity: 0.8;
+    opacity: 1;
+  }
+
+  .score__button:hover img {
+    opacity: 1;
   }
 
   .comment-card__update-button:hover:not(:disabled) {

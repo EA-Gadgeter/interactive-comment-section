@@ -79,6 +79,23 @@
   }
 }
 
+@media (min-width: 1440px) {
+  .delete-modal {
+    width: min(100%, 34.3rem);
+    padding: 2.4rem;
+    border-radius: 0.8rem;
+  }
+
+  .delete-modal__description {
+    margin-top: 1.6rem;
+  }
+
+  .delete-modal__actions {
+    margin-top: 2rem;
+    gap: 1.2rem;
+  }
+}
+
 @media (hover: hover) {
   .delete-modal__button--cancel:hover {
     opacity: 0.85;

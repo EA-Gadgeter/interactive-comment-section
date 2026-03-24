@@ -47,8 +47,8 @@
 
 @media (min-width: 1440px) {
   .comments-page {
-    width: min(100%, 102.4rem);
-    padding-top: 6.4rem;
+    width: min(100%, 73rem);
+    padding: 6.4rem 0 0;
   }
 }
 

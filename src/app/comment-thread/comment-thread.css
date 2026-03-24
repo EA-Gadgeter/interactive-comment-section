@@ -29,3 +29,16 @@
   }
 }
 
+@media (min-width: 1440px) {
+  .comment-thread,
+  .comment-thread__item,
+  .comment-thread__replies {
+    gap: 1.6rem;
+  }
+
+  .comment-thread__replies {
+    margin-left: 4rem;
+    padding-left: 4rem;
+  }
+}
+
